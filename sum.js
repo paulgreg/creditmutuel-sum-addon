@@ -1,5 +1,5 @@
 const accountsSelector = '.ei_sdsf_solde span'
-const accountTitleSelector = 'th.eir_tblshowth'
+const accountRowSelector = '.ei_comptescontrats tbody:last-child'
 
 let acc = 0
 let accounts = document.querySelectorAll(accountsSelector)
@@ -15,4 +15,17 @@ for(var account in accounts) {
 
 const sum = acc.toLocaleString()
 
-document.querySelector(accountTitleSelector).innerHTML += ` - <strong>total : ${sum} €</strong>`
+const tr = document.createElement('tr')
+
+const tdTitle = document.createElement('td')
+tdTitle.innerText = 'SOMME DE VOS COMPTES :'
+tdTitle.style = 'font-weight: bold;'
+tr.appendChild(tdTitle)
+
+const tdSum = document.createElement('td')
+tdSum.innerText = `${acc > 0 ? '+' : '-'} ${sum} EUR`
+tdSum.style = `color: ${acc > 0 ? 'green' : 'red'}; text-align: left; font-weight: bold;`
+tdSum.setAttribute('colspan', '2')
+tr.appendChild(tdSum)
+
+document.querySelector(accountRowSelector).appendChild(tr)
