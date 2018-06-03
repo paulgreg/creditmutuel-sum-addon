@@ -23,7 +23,7 @@ tdTitle.style = 'font-weight: bold;'
 tr.appendChild(tdTitle)
 
 const tdSum = document.createElement('td')
-tdSum.textContent = `${acc > 0 ? '+' : '-'} ${sum} EUR`
+tdSum.textContent = `${acc > 0 ? '+' : ''} ${sum} EUR`
 tdSum.style = `color: ${acc > 0 ? 'green' : 'red'}; text-align: left; font-weight: bold;`
 tdSum.setAttribute('colspan', '2')
 tr.appendChild(tdSum)
